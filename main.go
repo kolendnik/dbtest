@@ -15,10 +15,14 @@ func main() {
 	}
 
 	if len(os.Args) < 2 {
-		fmt.Println("avaible dsn connections strings")
+		fmt.Println("Usage:")
+		fmt.Printf("\tdbtest \"DSN\"\n")
+		fmt.Printf("\tdbtest \"%s\"\n", exampleDsns[0])
+		fmt.Println("")
+		fmt.Println("Avaible DSN connection strings:")
 
-		for _, eDsn := range exampleDsns {
-			fmt.Println(eDsn)
+		for i, eDsn := range exampleDsns {
+			fmt.Printf("[%d] %s\n", i+1, eDsn)
 		}
 		os.Exit(0)
 	}
