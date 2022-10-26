@@ -12,11 +12,11 @@ import (
 
 var (
 	exampleDsns map[string][]string = map[string][]string{
-		"sqlserver": []string{
+		"sqlserver": {
 			"sqlserver://{username}:{password}@{host}/{instance}?database={db}",
 			"sqlserver://{username}:{password}@{host}:{port}?database={db}",
 		},
-		"mysql": []string{
+		"mysql": {
 			"{username}:{password}@{protocol}({host})/{dbname}",
 		},
 	}
@@ -29,9 +29,11 @@ var (
 func main() {
 
 	if len(os.Args) < 3 {
+		fmt.Println("tool for testing database connection")
+		fmt.Println("")
 		fmt.Println("Usage:")
-		fmt.Printf("\tdbtest \"DSN\"\n")
-		fmt.Printf("\tdbtest \"%s\"\n", exampleDsns["sqlserver"][0])
+		fmt.Printf("\tdbtest driver \"DSN\"\n")
+		fmt.Printf("\tdbtest %s \"%s\"\n", "sqlserver", exampleDsns["sqlserver"][0])
 		fmt.Println("")
 		fmt.Println("Avaible drivers with avaible DSN formats:")
 
